@@ -8,7 +8,7 @@ const App = () => {
   return (
     <div className="App">
       <PageLayout headerText="Decision Engine">
-        <StyledForm placeholderText='Enter Personal Number' buttonText='Submit'></StyledForm>
+        <StyledForm buttonText='Submit' errMessage='Please enter correct value'></StyledForm>
       </PageLayout>
     </div>
   );
