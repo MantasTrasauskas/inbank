@@ -1,11 +1,13 @@
+import config from "../../config";
+
 export const isPersonalNrValid = (value) => {
-    return [49002010965, 49002010976, 49002010987, 49002010998].includes(Number(value));
+    return config.REACT_APP_PERSONAL_NUMEBR_LIMITS.includes(Number(value));
 }
 
 export const isLoanAmountValid = (value) => {
     const loanAmount = Number(value)
     if (isNaN(loanAmount)) return false;
-    if (loanAmount < 2000 || loanAmount > 10000) return false;
+    if (loanAmount < config.REACT_APP_LOAN_AMOUNT_LIMIT[0] || loanAmount > config.REACT_APP_LOAN_AMOUNT_LIMIT[1]) return false;
     return true;
 }
 export const isLoanPeriodValid = (value) => {
@@ -14,6 +16,6 @@ export const isLoanPeriodValid = (value) => {
     if (isNaN(newDate)) return false;
     const months = newDate.getMonth() - currentDate.getMonth() +
         (12 * (newDate.getFullYear() - currentDate.getFullYear()));
-    if (months < 12 || months > 60) return false;
+    if (months < config.REACT_APP_LOAN_PERIOD_LIMIT[0] || months > config.REACT_APP_LOAN_PERIOD_LIMIT[2]) return false;
     return true;
 }
